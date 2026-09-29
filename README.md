@@ -5,11 +5,11 @@
 
 ## 效果预览
 
-![V5 结尾梦境/出发段关键帧](docs/generated/shuishou-v5-keyframe-110s-960x540.jpg)
+![V5 都市/剧情推进段关键帧](docs/generated/shuishou-v5-keyframe-73s-960x540.jpg)
 
-![V5 结尾梦境/出发段 20 秒预览](docs/preview/shuishou-v5-preview-0138-0158-960x540.mp4)
+![V5 都市/剧情推进段 20 秒预览](docs/preview/shuishou-v5-preview-0113-0133-960x540.mp4)
 
-预览为 `960×540 / 24fps / CRF28`，取自 `01:38–01:58`。完整参数见 [`PREVIEWS.md`](PREVIEWS.md)。
+预览为 `960×540 / 24fps / CRF28`，取自 `01:13–01:33`。完整参数见 [`PREVIEWS.md`](PREVIEWS.md)。
 
 ## 目录结构
 
@@ -25,7 +25,7 @@
 
 ## 预览版与生成图
 
-- `docs/preview/shuishou-v5-preview-0138-0158-960x540.mp4`：20 秒结尾梦境/出发段预览，960×540 / 24fps / CRF28。
+- `docs/preview/shuishou-v5-preview-0113-0133-960x540.mp4`：20 秒都市/剧情推进段预览，960×540 / 24fps / CRF28。
 - `docs/generated/`：26s、37s、45s、54s、103s、110s 六张 960×540 关键帧图。
 - `PREVIEWS.md`：预览版参数与重新生成命令。
 
