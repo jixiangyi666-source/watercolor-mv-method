@@ -1,11 +1,7 @@
 node_modules/
-out/
-audio/
-lyrics/
-*.mp4
-*.m4a
-*.wav
-*.lrc
-*.srt
+out/frames/
+out/frames_v4_before_v5/
+out/*.mp4
+*.log
 .DS_Store
 Thumbs.db

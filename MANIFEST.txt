@@ -1,0 +1,7 @@
+shuishou-mv GitHub-ready package
+================================
+
+Included:
+  source, render scripts, storyboards, method guides, small QA images
+Excluded:
+  audio, final videos, full frame sequences, node_modules

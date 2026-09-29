@@ -1,0 +1,16 @@
+{
+  "name": "shuishou-mv",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Shuishou hand-painted watercolour MV render project",
+  "scripts": {
+    "sheet": "node render.mjs --sheet=0,1,2,3,4,5 --out=out/sheet.jpg",
+    "video": "node render.mjs --clip --out=out/video.mp4"
+  },
+  "dependencies": {
+    "p5": "^2.3.3",
+    "p5.brush": "^2.2.3",
+    "puppeteer-core": "^25.11.0"
+  }
+}

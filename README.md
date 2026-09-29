@@ -1,51 +1,76 @@
-# Watercolor MV Method
+# 《水手》手绘水彩 MV · V5 渲染工程
 
-一个公开的“手绘水彩 MV 制作方法包”，用于让别人根据提示词和流程复现同类效果。
+这是一个 1920×1080 / 24fps / 约 127.8 秒的手绘水彩风格 MV 渲染工程。仓库保存渲染源码、分镜与制作方法，不包含大体积成片和帧序列。
 
-本仓库刻意不包含完整工程源码、音频、歌词、成片、帧序列、第三方示例角色或原项目历史，目的是分享可复用的创作方法和 QA 流程。
+## 目录结构
 
-## 目录
+- `src/`：渲染核心、场景、角色、歌词与时间轴
+- `docs/`：角色与动作参考图
+- `out/check/`：关键帧与局部 QA 图
+- `ANIMATION_GUIDE.md`：动画与画面制作方法
+- `STORYBOARD.md`：分镜设计
+- `HANDOFF_SHUISHOU_V5.md`：V5 渲染交接说明
+- `RENDER_RESULTS.md`：本次成片渲染与校验记录
+- `render.mjs`：无头 Chrome 渲染 / 编码入口
+- `studio.html`：本地预览入口
 
-```text
-README.md
-REPRODUCE_PROMPT.md
-docs/
-  render-workflow.md
-  effect-spec.md
-  qa-checklist.md
-  storyboard-template.md
-  repo-content-policy.md
-prompts/
-  reproduce-prompt.md
-qa/
-  sailor_v5_face.jpg
-  sailor_v5_face2.jpg
-  v5head45.jpg
-  v5head54.jpg
+## 预览版与生成图
+
+- `docs/preview/shuishou-v5-preview-0138-0158-960x540.mp4`：20 秒结尾梦境/出发段预览，960×540 / 24fps / CRF28。
+- `docs/generated/`：26s、37s、45s、54s、103s、110s 六张 960×540 关键帧图。
+- `PREVIEWS.md`：预览版参数与重新生成命令。
+
+## 本地预览
+
+```powershell
+npm install
 ```
 
-## 快速开始
+安装依赖后，用浏览器打开：
 
-1. 阅读 `REPRODUCE_PROMPT.md`。
-2. 将其中整段提示词复制给支持本地文件读写的编码代理。
-3. 准备你自己拥有授权的音频、歌词和分镜。
-4. 要求代理先输出镜头表、调色板、角色设定、关键帧计划和 QA 计划，确认后再写代码。
-5. 按 `docs/render-workflow.md` 的流程分阶段渲染、检查、编码。
+```text
+studio.html
+```
 
-## 核心效果目标
+完整渲染需要音频文件位于：
 
-- 1920×1080，24fps，约 2 分钟。
-- 平面 2D 手绘水彩，不用 3D 渲染。
-- 墨线轻微“沸腾”，纸张颗粒和水彩边缘稳定存在。
-- 每一帧都是时间 `t` 的确定性函数，便于并行渲染和续渲。
-- 每个镜头都有事件、动作和情绪变化。
-- 静止画面仍保留呼吸、风、雨、水波、布料或光影微动。
-- 输出 H.264 / CRF17 / slow / AAC 192kbps / faststart MP4。
+```text
+assets/shuishou.m4a
+```
 
-## 版权与授权
+出于版权和仓库体积考虑，本仓库不直接附带音频。
 
-- 本仓库不提供《水手》音频、歌词或成片。
-- `qa/` 中的图片仅作为方法说明和视觉 QA 示例，不授权他人直接再利用。
-- 仓库许可证待确认；在未添加许可证前，默认保留所有权利。
-- 使用者必须自行准备音频、歌词、字体、角色和图像素材的授权。
+## 渲染关键帧 QA
 
+```powershell
+node render.mjs --sheet=26,37,45,54,103,110 --cols=3 --w=560 --out=out/check/render_qa_sheet.jpg
+```
+
+## 渲染整片帧序列
+
+```powershell
+node render.mjs --frames --workers=4
+```
+
+## 编码成片
+
+确保 `ffmpeg` 可用后执行：
+
+```powershell
+node render.mjs --encode --out=out/video_v5.mp4 --audio=assets/shuishou.m4a
+```
+
+成片规格：
+
+- 1920×1080
+- 24fps
+- 3067 帧
+- 约 127.792 秒
+- H.264 / CRF17 / slow
+- AAC 音频
+
+## 版权与授权说明
+
+- 根目录 `LICENSE` 保留 MIT 许可证与原始版权声明。
+- 《水手》相关音频、歌词与成片权利归原权利人所有；未确认授权范围前，不应公开分发。
+- 若要公开此仓库，请先确认歌词、音频、最终成片与参考素材的授权范围。
